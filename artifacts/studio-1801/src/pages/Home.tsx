@@ -115,33 +115,23 @@ export default function Home() {
 
         <div className="hero-content">
           <section id="services" className="reference-left" data-testid="section-hero-left">
-            <span className="hero-eyebrow" data-testid="text-hero-eyebrow">The work you can't unsee</span>
             <h1 data-testid="text-hero-title">
-              See Your New Website.
-              <br />
-              Before You Pay.
+              Find Out Why Your Website Isn’t Bringing In More Customers.
             </h1>
             <p className="reference-description" data-testid="text-hero-desc">
-              7 Ways Your Website Is Losing Customers. We'll Show You Exactly How
-              We'd Fix Them.
+              Get a free 3-point Restaurant Website Growth Plan showing where you’re losing bookings, orders, and revenue, plus step-by-step instructions to fix each issue.
             </p>
             <ul className="hero-checks" aria-label="What is included" data-testid="list-hero-checks">
-              <li>Custom restaurant homepage</li>
-              <li>Live in 48 hours</li>
-              <li>7 revenue leaks identified</li>
-              <li className="hero-check-emphasis">Keep it. No risk.</li>
+              <li>Three high-impact issues identified</li>
+              <li>Step-by-step fixes for each issue</li>
+              <li>Delivered within 48 hours</li>
+              <li className="hero-check-emphasis">Free. No obligation.</li>
             </ul>
             <div className="hero-actions">
               <a className="hero-cta" href={freeOfferFormUrl} target="_blank" rel="noreferrer" data-testid="button-claim-offer">
-                Claim your Free Offer <span aria-hidden="true">→</span>
+                SEE WHAT’S COSTING ME <span aria-hidden="true">→</span>
               </a>
-              <button className="hero-secondary-cta" type="button" onClick={() => setIsContactOpen(true)} data-testid="button-contact">
-                Contact us <span aria-hidden="true">↗</span>
-              </button>
             </div>
-            <a className="hero-work-link" href="mailto:hello@1801.studio?subject=Claim%20my%20Free%20Personalized%20Review" data-testid="link-hero-work">
-              <span aria-hidden="true">•</span> Build your website before you spend a dollar
-            </a>
           </section>
 
           <section className="reference-right" data-testid="section-hero-right">

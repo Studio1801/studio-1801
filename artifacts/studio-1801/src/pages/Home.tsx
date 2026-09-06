@@ -116,20 +116,23 @@ export default function Home() {
         <div className="hero-content">
           <section id="services" className="reference-left" data-testid="section-hero-left">
             <h1 data-testid="text-hero-title">
-              Find Out Why Your Website Isn’t Bringing In More Customers.
+              Your Website Could Be Costing You Customers.
             </h1>
             <p className="reference-description" data-testid="text-hero-desc">
-              Get a free 3-point Restaurant Website Growth Plan showing where you’re losing bookings, orders, and revenue, plus step-by-step instructions to fix each issue.
+              Get a free 3-point growth plan showing what’s going wrong and exactly how to fix it.
             </p>
             <ul className="hero-checks" aria-label="What is included" data-testid="list-hero-checks">
-              <li>Three high-impact issues identified</li>
-              <li>Step-by-step fixes for each issue</li>
+              <li>Three high-impact issues</li>
+              <li>Step-by-step solutions</li>
               <li>Delivered within 48 hours</li>
               <li className="hero-check-emphasis">Free. No obligation.</li>
             </ul>
             <div className="hero-actions">
               <a className="hero-cta" href={freeOfferFormUrl} target="_blank" rel="noreferrer" data-testid="button-claim-offer">
-                SEE WHAT’S COSTING ME <span aria-hidden="true">→</span>
+                See what’s costing me <span aria-hidden="true">→</span>
+              </a>
+              <a className="hero-secondary-cta" href="#work" data-testid="button-see-work">
+                See our work <span aria-hidden="true">↗</span>
               </a>
             </div>
           </section>

@@ -139,6 +139,19 @@
   margin: 0 0 32px;
   max-width: 400px;
 }
+.hero-trust-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: -18px 0 24px;
+  color: var(--gray-text);
+  font-size: 12px;
+  line-height: 1.4;
+}
+.hero-trust-line span {
+  color: var(--accent);
+  font-size: 1.1em;
+}
 
 .hero-checks {
   display: grid;

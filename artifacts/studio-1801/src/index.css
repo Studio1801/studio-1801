@@ -186,8 +186,8 @@
   transition: all 0.2s ease;
 }
 .hero-cta {
-  background: #e86f1a;
-  border: 1px solid #e86f1a;
+  background: #d95d0e;
+  border: 1px solid #d95d0e;
   color: var(--cream);
 }
 .hero-cta:hover {

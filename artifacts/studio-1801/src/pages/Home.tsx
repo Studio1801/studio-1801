@@ -119,7 +119,7 @@ export default function Home() {
               Your Website Could Be Costing You Customers.
             </h1>
             <p className="reference-description" data-testid="text-hero-desc">
-              Claim Your 3 Steps to Increase Order on Your F&amp;B Website. For Free.
+              3 Ways You Can Increase Orders for Your F&amp;B Website. For FREE.
             </p>
             <ul className="hero-checks" aria-label="What is included" data-testid="list-hero-checks">
               <li>Three high-impact issues</li>
@@ -129,7 +129,7 @@ export default function Home() {
             </ul>
             <div className="hero-actions">
               <a className="hero-cta" href={freeOfferFormUrl} target="_blank" rel="noreferrer" data-testid="button-claim-offer">
-                See what’s costing me <span aria-hidden="true">→</span>
+                Claim My Free Offer <span aria-hidden="true">→</span>
               </a>
               <a className="hero-secondary-cta" href="#work" data-testid="button-see-work">
                 See our work <span aria-hidden="true">↗</span>

@@ -150,7 +150,16 @@
 }
 .hero-trust-line span {
   color: var(--accent);
-  font-size: 1.1em;
+}
+.hero-trust-line .hero-rating-stars {
+  flex: none;
+  font-size: 0.9em;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+.hero-trust-line > span:last-child {
+  color: inherit;
+  font-size: inherit;
 }
 
 .hero-checks {
@@ -2138,11 +2147,15 @@
     font-size: 1.75rem;
   }
   .reference-description {
-    font-size: 1.35rem;
+    font-size: 1.55rem;
     line-height: 1.3;
-    letter-spacing: -0.015em;
+    letter-spacing: -0.01em;
     max-width: none;
     text-wrap: balance;
+  }
+  .reference-left h1 {
+    font-size: 4.55rem;
+    line-height: 0.9;
   }
   .hero-eyebrow {
     font-size: 0.625rem;

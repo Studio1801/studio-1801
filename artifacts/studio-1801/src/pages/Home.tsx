@@ -122,7 +122,9 @@ export default function Home() {
               3 Ways You Can Increase Orders for Your F&amp;B Website. For FREE.
             </p>
             <p className="hero-trust-line">
-              <span aria-hidden="true">✦</span> Made for restaurant owners · Free to claim · No obligation.
+              <span className="hero-rating-stars" aria-hidden="true">★★★★★</span>
+              <span className="sr-only">Rated 4.9 out of 5 stars.</span>
+              <span>4.9/5 satisfaction guarantee.</span>
             </p>
             <ul className="hero-checks" aria-label="What is included" data-testid="list-hero-checks">
               <li>Three high-impact issues</li>

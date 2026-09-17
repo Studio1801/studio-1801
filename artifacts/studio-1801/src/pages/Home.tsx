@@ -119,7 +119,7 @@ export default function Home() {
               Your Website Could Be Costing You Customers.
             </h1>
             <p className="reference-description" data-testid="text-hero-desc">
-              Get a free 3-point growth plan showing what’s going wrong and exactly how to fix it.
+              Claim Your 3 Steps to Increase Order on Your F&amp;B Website. For Free.
             </p>
             <ul className="hero-checks" aria-label="What is included" data-testid="list-hero-checks">
               <li>Three high-impact issues</li>

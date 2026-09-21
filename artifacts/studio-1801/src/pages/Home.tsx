@@ -38,6 +38,7 @@ What I’d like help with:
 
 Thank you,
 `)}`;
+const appsScriptLeadUrl = 'https://script.google.com/macros/s/AKfycby_qlDC80MsfA7cXnxsDN1uaQyXu68caspLoArflHsO5c7ZmVWMvouYzHPiruJKs7iHVg/exec';
 
 const frustrationOptions = [
   "Not enough new customers, or they don't come back often",
@@ -266,6 +267,20 @@ export default function Home() {
       }
 
       setOfferSubmitted(true);
+      void fetch(appsScriptLeadUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: JSON.stringify({
+          businessName: offerForm.businessName.trim(),
+          businessType: offerForm.businessType === 'Other' ? offerForm.businessTypeOther.trim() : offerForm.businessType,
+          frustration: offerForm.frustration === 'Other' ? offerForm.frustrationOther.trim() : offerForm.frustration,
+          websiteGoal: offerForm.websiteGoal === 'Other' ? offerForm.websiteGoalOther.trim() : offerForm.websiteGoal,
+          budget: offerForm.budget.trim(),
+          contact: offerForm.contact.trim(),
+        }),
+      }).catch((error) => {
+        console.error('Could not send the lead to the external form endpoint.', error);
+      });
     } catch {
       setOfferSubmitError('We couldn’t send that just now. Please try again.');
     } finally {

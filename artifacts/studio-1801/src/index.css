@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Instrument+Sans:wght@400;500;600&family=Work+Sans:wght@400;500;600&display=swap');
 @import 'tailwindcss';
 
 @theme inline {
@@ -338,18 +338,222 @@
   display: flex;
   flex-direction: column;
 }
-.reference-image {
+.hero-mockup-stage {
+  --mockup-cream: #f6f3ec;
+  --mockup-ink: #17140f;
+  --mockup-olive: #4a5b3b;
+  --mockup-border: rgba(23, 20, 15, 0.1);
+  position: relative;
   width: 100%;
   aspect-ratio: 1.42;
-  overflow: hidden;
-  border-radius: 14px;
   margin-top: 30px;
+  isolation: isolate;
+  color: var(--mockup-ink);
+  font-family: "Work Sans", "Helvetica Neue", Arial, sans-serif;
 }
-.reference-image img {
+.hero-mockup {
+  position: absolute;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--mockup-border);
+  box-shadow: 0 0.8rem 1.8rem rgba(23, 20, 15, 0.14);
+  transition:
+    transform 280ms ease,
+    box-shadow 280ms ease;
+  will-change: transform;
+}
+.hero-browser-mockup {
+  top: 3%;
+  left: 2%;
+  z-index: 1;
+  width: 79%;
+  border-radius: 0.875rem;
+  transform: translate3d(var(--mockup-parallax-x), var(--mockup-parallax-y), 0) rotate(-3deg);
+}
+.hero-phone-mockup {
+  right: 2%;
+  bottom: 2%;
+  z-index: 2;
+  width: 38%;
+  padding: 0.55rem;
+  border-radius: 2rem;
+  transform: translate3d(var(--mockup-parallax-x), var(--mockup-parallax-y), 0) rotate(3deg);
+}
+.hero-mockup:hover {
+  z-index: 4;
+  box-shadow: 0 1.25rem 2.8rem rgba(23, 20, 15, 0.25);
+}
+.hero-browser-mockup:hover {
+  transform: translate3d(var(--mockup-parallax-x), calc(var(--mockup-parallax-y) - 8px), 0) rotate(0deg);
+}
+.hero-phone-mockup:hover {
+  transform: translate3d(var(--mockup-parallax-x), calc(var(--mockup-parallax-y) - 8px), 0) rotate(0deg);
+}
+.mockup-browser-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 1.6rem;
+  padding: 0 0.7rem;
+  border-bottom: 1px solid var(--mockup-border);
+  color: rgba(23, 20, 15, 0.52);
+  font-size: 0.48rem;
+  letter-spacing: 0.02em;
+}
+.mockup-browser-dots {
+  display: flex;
+  gap: 0.25rem;
+}
+.mockup-browser-dots i {
+  display: block;
+  width: 0.33rem;
+  height: 0.33rem;
+  border-radius: 50%;
+  background: rgba(23, 20, 15, 0.28);
+}
+.mockup-browser-url {
+  padding: 0.22rem 1.5rem;
+  border: 1px solid var(--mockup-border);
+  border-radius: 999px;
+}
+.mockup-browser-body {
+  padding: 1rem 1.05rem 1.1rem;
+}
+.mockup-browser-nav,
+.mockup-phone-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--mockup-ink);
+  font-size: 0.56rem;
+  letter-spacing: 0.01em;
+}
+.mockup-browser-nav strong,
+.mockup-phone-nav strong {
+  font-weight: 600;
+}
+.mockup-image-block {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--mockup-olive) 0%, #8c9a7a 54%, var(--mockup-cream) 100%);
+}
+.mockup-browser-image {
+  display: flex;
+  align-items: flex-end;
+  height: 7.8rem;
+  margin: 0.9rem 0 1rem;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  color: rgba(255, 255, 255, 0.86);
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 0.95rem;
+  line-height: 1;
+}
+.mockup-display-heading,
+.mockup-phone-heading {
+  max-width: 12rem;
+  color: var(--mockup-ink);
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.2rem;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+}
+.mockup-text-bars {
+  display: grid;
+  gap: 0.28rem;
+  margin: 0.65rem 0 0.85rem;
+}
+.mockup-text-bars i {
+  display: block;
+  width: 68%;
+  height: 0.23rem;
+  border-radius: 999px;
+  background: rgba(23, 20, 15, 0.18);
+}
+.mockup-text-bars i:nth-child(2) {
+  width: 52%;
+}
+.mockup-text-bars i:nth-child(3) {
+  width: 40%;
+}
+.mockup-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 1.7rem;
+  padding: 0 0.7rem;
+  border-radius: 999px;
+  background: var(--mockup-olive);
+  color: #fff;
+  font-size: 0.52rem;
+  letter-spacing: 0.01em;
+}
+.mockup-phone-speaker {
+  width: 28%;
+  height: 0.2rem;
+  margin: 0 auto 0.5rem;
+  border-radius: 999px;
+  background: rgba(23, 20, 15, 0.78);
+}
+.mockup-phone-screen {
+  overflow: hidden;
+  aspect-ratio: 0.56;
+  padding: 0.9rem 0.8rem 0.8rem;
+  border-radius: 1.5rem;
+  background: var(--mockup-cream);
+}
+.mockup-phone-nav {
+  font-size: 0.5rem;
+}
+.mockup-phone-image-stack {
+  position: relative;
+  height: 7.4rem;
+  margin: 0.8rem 0 1rem;
+}
+.mockup-phone-image-stack span {
+  position: absolute;
+  display: block;
+  overflow: hidden;
+  border-radius: 0.45rem;
+}
+.mockup-phone-image-stack span::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--mockup-olive), #8c9a7a 58%, var(--mockup-cream));
+}
+.mockup-phone-image-stack span:nth-child(1) {
+  top: 0.7rem;
+  right: 0;
+  width: 78%;
+  height: 72%;
+  background: #d8ddd0;
+}
+.mockup-phone-image-stack span:nth-child(2) {
+  top: 0;
+  left: 0;
+  width: 76%;
+  height: 72%;
+  background: #e7dfd0;
+  transform: rotate(-5deg);
+}
+.mockup-phone-image-stack span:nth-child(3) {
+  right: 0.45rem;
+  bottom: 0;
+  width: 74%;
+  height: 72%;
+  background: #c5ccb9;
+  transform: rotate(4deg);
+}
+.mockup-phone-heading {
+  font-size: 0.95rem;
+}
+.mockup-phone-bars {
+  margin-top: 0.55rem;
+}
+.mockup-phone-button {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: grayscale(20%);
+  min-height: 1.6rem;
 }
 .reference-work-copy h2 {
   font-size: clamp(24px, 2vw, 32px);
@@ -435,7 +639,7 @@
     padding-top: 2rem;
   }
 
-  .reference-image {
+  .hero-mockup-stage {
     aspect-ratio: 1.667;
     max-height: 48dvh;
   }
@@ -506,7 +710,7 @@
     margin-bottom: 1.1rem;
   }
 
-  .reference-image {
+  .hero-mockup-stage {
     margin-top: 1.75rem;
     width: calc(100% - 0.5rem);
   }
@@ -2172,7 +2376,6 @@
   .reference-contact {
     border-radius: 1rem;
   }
-  .reference-image,
   .work-card-image,
   .services-image,
   .process-step-image {
@@ -2201,7 +2404,7 @@
   }
 
   /* Hero Mobile: image comes before the work copy */
-  .reference-right .reference-image {
+  .reference-right .hero-mockup-stage {
     order: -1;
     margin-top: 0;
     margin-bottom: 28px;
@@ -2531,7 +2734,7 @@
     order: 1;
   }
 
-  .reference-right .reference-image {
+  .reference-right .hero-mockup-stage {
     order: -1;
     aspect-ratio: 1.2;
     margin: 0;

@@ -345,6 +345,7 @@
   border-radius: 1rem;
   background: #f6f3ec;
   color: #17140f;
+  font-family: "Work Sans";
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2);
 }
 .offer-modal-header {
@@ -358,14 +359,14 @@
   display: block;
   margin-bottom: 0.7rem;
   color: var(--gray-text);
-  font-family: "Work Sans", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Work Sans";
   font-size: 0.68rem;
   letter-spacing: 0.06em;
 }
 .offer-modal-header h2,
 .offer-success h2 {
   margin: 0;
-  font-family: "Fraunces", Georgia, serif;
+  font-family: "Fraunces";
   font-size: 2.4rem;
   font-weight: 500;
   line-height: 0.98;
@@ -376,9 +377,17 @@
   max-width: 29rem;
   margin: 0.9rem 0 0;
   color: var(--gray-text);
-  font-family: "Work Sans", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Work Sans";
   font-size: 0.82rem;
   line-height: 1.5;
+}
+.offer-progress {
+  display: block;
+  margin-top: 0.85rem;
+  color: rgba(23, 20, 15, 0.58);
+  font-family: "Work Sans";
+  font-size: 0.68rem;
+  line-height: 1;
 }
 .offer-modal-close {
   display: grid;
@@ -405,7 +414,7 @@
 }
 .offer-form {
   display: grid;
-  gap: 1.7rem;
+  gap: 48px;
 }
 .offer-fieldset {
   min-width: 0;
@@ -418,7 +427,7 @@
   display: block;
   margin-bottom: 0.85rem;
   color: #17140f;
-  font-family: "Work Sans", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Work Sans";
   font-size: 0.82rem;
   font-weight: 500;
   line-height: 1.4;
@@ -434,10 +443,11 @@
 .offer-radio-option {
   display: flex;
   align-items: flex-start;
-  gap: 0.6rem;
-  padding: 0.4rem 0;
-  color: var(--gray-text);
-  font-family: "Work Sans", "Helvetica Neue", Arial, sans-serif;
+  gap: 0.9rem;
+  min-height: 44px;
+  padding: 0.7rem 0;
+  color: rgba(23, 20, 15, 0.8);
+  font-family: "Work Sans";
   font-size: 0.75rem;
   line-height: 1.35;
   cursor: pointer;
@@ -454,8 +464,8 @@
   cursor: pointer;
 }
 .offer-radio-option input:checked {
-  border: 0.27rem solid #4a5b3b;
-  background: #fff;
+  border: 2px solid #17140f;
+  background: radial-gradient(circle, #17140f 0 0.22rem, #fff 0.24rem);
 }
 .offer-radio-option input:focus-visible,
 .offer-text-input:focus-visible,
@@ -478,7 +488,7 @@
   outline: none;
   background: #fff;
   color: #17140f;
-  font: 400 0.82rem/1.3 "Work Sans", "Helvetica Neue", Arial, sans-serif;
+  font: 400 0.82rem/1.3 "Work Sans";
 }
 .offer-text-input:focus {
   border-color: #4a5b3b;
@@ -491,7 +501,7 @@
   display: block;
   margin: 0.5rem 0 0;
   color: #9a3e20;
-  font-family: "Work Sans", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Work Sans";
   font-size: 0.68rem;
   line-height: 1.35;
 }
@@ -503,7 +513,7 @@
   border-radius: 999px;
   background: #17140f;
   color: #f6f3ec;
-  font: 400 12px/1 "Work Sans", "Helvetica Neue", Arial, sans-serif;
+  font: 400 12px/1 "Work Sans";
   cursor: pointer;
 }
 .offer-submit-button:hover {

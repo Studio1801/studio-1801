@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
+import { type CSSProperties, type MouseEvent, useEffect, useState } from 'react';
 import { Instagram, Mail, MessageCircle, MessageSquare } from 'lucide-react';
-import heroLead from '@assets/Image_7_1787435406771.jpeg';
 import projectOne from '@assets/Unknown_1787504780455.png';
 import projectTwo from '@assets/Unknown1_1787438547314.png';
 import projectThree from '@assets/Unknown2_1787438547314.png';
@@ -69,6 +68,18 @@ const serviceOptions = [
 export default function Home() {
   const [activeService, setActiveService] = useState(0);
   const [isContactOpen, setIsContactOpen] = useState(false);
+  const [mockupOffset, setMockupOffset] = useState({ x: 0, y: 0 });
+
+  const handleMockupMove = (event: MouseEvent<HTMLDivElement>) => {
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const normalizedX = (event.clientX - bounds.left) / bounds.width - 0.5;
+    const normalizedY = (event.clientY - bounds.top) / bounds.height - 0.5;
+
+    setMockupOffset({
+      x: Number((normalizedX * 6).toFixed(2)),
+      y: Number((normalizedY * 5).toFixed(2)),
+    });
+  };
 
   useEffect(() => {
     if (!isContactOpen) {
@@ -152,8 +163,63 @@ export default function Home() {
               </p>
               <a href="#work" data-testid="link-hero-explore">Explore the work <span aria-hidden="true">→</span></a>
             </div>
-            <div className="reference-image" data-testid="img-hero-lead-container">
-              <img src={heroLead} alt="Soft-focus flowers against a blue sky" data-testid="img-hero-lead" />
+            <div
+              className="hero-mockup-stage"
+              data-testid="hero-mockup-stage"
+              onMouseMove={handleMockupMove}
+              onMouseLeave={() => setMockupOffset({ x: 0, y: 0 })}
+              style={{
+                '--mockup-parallax-x': `${mockupOffset.x}px`,
+                '--mockup-parallax-y': `${mockupOffset.y}px`,
+              } as CSSProperties}
+            >
+              <div className="hero-mockup hero-browser-mockup" data-testid="mockup-browser">
+                <div className="mockup-browser-bar">
+                  <span className="mockup-browser-dots" aria-hidden="true">
+                    <i />
+                    <i />
+                    <i />
+                  </span>
+                  <span className="mockup-browser-url">studio1801.com</span>
+                </div>
+                <div className="mockup-browser-body">
+                  <div className="mockup-browser-nav">
+                    <strong>studio 1801</strong>
+                    <span>Menu&nbsp; · &nbsp;Contact</span>
+                  </div>
+                  <div className="mockup-image-block mockup-browser-image" aria-hidden="true">
+                    <span>Make room for what matters.</span>
+                  </div>
+                  <div className="mockup-display-heading">A better digital front door.</div>
+                  <div className="mockup-text-bars" aria-hidden="true">
+                    <i />
+                    <i />
+                    <i />
+                  </div>
+                  <span className="mockup-button">Explore the work&nbsp; →</span>
+                </div>
+              </div>
+
+              <div className="hero-mockup hero-phone-mockup" data-testid="mockup-phone">
+                <div className="mockup-phone-speaker" aria-hidden="true" />
+                <div className="mockup-phone-screen">
+                  <div className="mockup-phone-nav">
+                    <strong>1801</strong>
+                    <span>•••</span>
+                  </div>
+                  <div className="mockup-phone-image-stack" aria-hidden="true">
+                    <span />
+                    <span />
+                    <span />
+                  </div>
+                  <div className="mockup-phone-heading">Find your next favorite place.</div>
+                  <div className="mockup-text-bars mockup-phone-bars" aria-hidden="true">
+                    <i />
+                    <i />
+                  </div>
+                  <span className="mockup-button mockup-phone-button">Book a table</span>
+                </div>
+              </div>
             </div>
           </section>
         </div>

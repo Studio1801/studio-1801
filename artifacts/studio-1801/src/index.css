@@ -425,19 +425,19 @@
   line-height: 1.4;
 }
 .offer-required {
-  color: rgba(23, 20, 15, 0.5);
+  color: #dc2626;
 }
 .offer-radio-options {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 8px;
+  gap: 6px;
 }
 .offer-radio-option {
   display: flex;
   align-items: flex-start;
   gap: 10px;
   min-height: 44px;
-  padding: 0.7rem 0;
+  padding: 0;
   color: rgba(23, 20, 15, 0.8);
   font-family: "Work Sans";
   font-size: 0.75rem;
@@ -3406,7 +3406,7 @@
 
   .offer-radio-options {
     grid-template-columns: 1fr;
-    gap: 8px;
+    gap: 6px;
   }
 
   .offer-form {

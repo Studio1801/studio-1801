@@ -1,4 +1,10 @@
-import { type CSSProperties, type MouseEvent, useEffect, useState } from 'react';
+import {
+  type CSSProperties,
+  type FormEvent,
+  type MouseEvent,
+  useEffect,
+  useState,
+} from 'react';
 import { Instagram, Mail, MessageCircle, MessageSquare } from 'lucide-react';
 import projectOne from '@assets/Unknown_1787504780455.png';
 import projectTwo from '@assets/Unknown1_1787438547314.png';
@@ -22,7 +28,6 @@ import strategyStreet from '@assets/image_1787508483431.png';
 import commonTableSelectedWork from '@assets/image_1787589715542.png';
 import fieldNotesSelectedWork from '@assets/image_1787589680522.png';
 
-const freeOfferFormUrl = 'https://docs.google.com/forms/d/1LIemhhTpNWY5vYamUZItCsHsG6jIuRgtHJfoDMbWYz8/viewform?pli=1&pli=1&edit_requested=true';
 const contactDraftUrl = `mailto:hello@1801.studio?subject=${encodeURIComponent('FREE website design and mockup')}&body=${encodeURIComponent(`Hi Studio 1801,
 
 I’d like to claim my FREE website for my restaurant.
@@ -33,6 +38,117 @@ What I’d like help with:
 
 Thank you,
 `)}`;
+
+const frustrationOptions = [
+  "Not enough new customers, or they don't come back often",
+  'Too much time spent on orders, bookings, and manual tasks',
+  'Costs (food, labor, rent) are cutting into profit',
+  'Hard to compete or stand out, especially with reviews and reputation',
+  'Hiring and keeping good staff members',
+];
+
+const websiteGoalOptions = [
+  'Take orders and bookings online, so I can market to customers directly',
+  'Get found on Google when people search for us',
+  'Sell products or gift cards directly on the site',
+  'Look more professional, with a menu people actually want to browse',
+  'Update my own menu, content, orders, or stock easily',
+];
+
+const businessTypeOptions = [
+  'Restaurant',
+  'Cafe, Coffee Shop, or Bakery',
+  'Bar, Brewery, or Winery',
+  'Dessert, Ice Cream, Juice, Smoothie, or Boba',
+  'Food Truck, Catering, or Private Chef (no fixed storefront)',
+];
+
+const initialOfferForm = {
+  frustration: '',
+  frustrationOther: '',
+  websiteGoal: '',
+  websiteGoalOther: '',
+  businessType: '',
+  businessTypeOther: '',
+  budget: '',
+  businessName: '',
+  contact: '',
+};
+
+type OfferFormValues = typeof initialOfferForm;
+type OfferFormErrors = Partial<Record<keyof OfferFormValues, string>>;
+
+type RadioQuestionProps = {
+  id: string;
+  legend: string;
+  options: string[];
+  value: string;
+  otherValue: string;
+  error?: string;
+  onChange: (value: string) => void;
+  onOtherChange: (value: string) => void;
+};
+
+function RadioQuestion({
+  id,
+  legend,
+  options,
+  value,
+  otherValue,
+  error,
+  onChange,
+  onOtherChange,
+}: RadioQuestionProps) {
+  const otherSelected = value === 'Other';
+
+  return (
+    <fieldset className="offer-fieldset" aria-describedby={error ? `${id}-error` : undefined}>
+      <legend>
+        {legend} <span className="offer-required" aria-hidden="true">*</span>
+      </legend>
+      <div className="offer-radio-options">
+        {options.map((option) => (
+          <label className="offer-radio-option" key={option}>
+            <input
+              type="radio"
+              name={id}
+              value={option}
+              checked={value === option}
+              onChange={() => onChange(option)}
+            />
+            <span>{option}</span>
+          </label>
+        ))}
+        <label className="offer-radio-option">
+          <input
+            type="radio"
+            name={id}
+            value="Other"
+            checked={otherSelected}
+            onChange={() => onChange('Other')}
+          />
+          <span>Other</span>
+        </label>
+      </div>
+      {otherSelected && (
+        <input
+          className="offer-text-input offer-other-input"
+          type="text"
+          value={otherValue}
+          onChange={(event) => onOtherChange(event.target.value)}
+          placeholder="Tell us a little more"
+          aria-label={`Other answer for ${legend}`}
+          required
+        />
+      )}
+      {error && (
+        <p className="offer-field-error" id={`${id}-error`} role="alert">
+          {error}
+        </p>
+      )}
+    </fieldset>
+  );
+}
 
 const serviceOptions = [
   {
@@ -68,7 +184,94 @@ const serviceOptions = [
 export default function Home() {
   const [activeService, setActiveService] = useState(0);
   const [isContactOpen, setIsContactOpen] = useState(false);
+  const [isOfferOpen, setIsOfferOpen] = useState(false);
+  const [offerSubmitted, setOfferSubmitted] = useState(false);
+  const [isOfferSubmitting, setIsOfferSubmitting] = useState(false);
+  const [offerForm, setOfferForm] = useState<OfferFormValues>(initialOfferForm);
+  const [offerErrors, setOfferErrors] = useState<OfferFormErrors>({});
+  const [offerSubmitError, setOfferSubmitError] = useState('');
   const [mockupOffset, setMockupOffset] = useState({ x: 0, y: 0 });
+
+  const updateOfferField = (field: keyof OfferFormValues, value: string) => {
+    setOfferForm((current) => ({ ...current, [field]: value }));
+    setOfferErrors((current) => ({ ...current, [field]: undefined }));
+  };
+
+  const openOffer = () => {
+    setOfferForm(initialOfferForm);
+    setOfferErrors({});
+    setOfferSubmitError('');
+    setOfferSubmitted(false);
+    setIsOfferOpen(true);
+  };
+
+  const handleOfferSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const nextErrors: OfferFormErrors = {};
+    const requiredFields: Array<[keyof OfferFormValues, string]> = [
+      ['budget', 'Enter your estimated budget range.'],
+      ['businessName', 'Enter your business name.'],
+      ['contact', 'Enter an email address or phone number.'],
+    ];
+
+    if (!offerForm.frustration) {
+      nextErrors.frustration = 'Choose one answer.';
+    } else if (offerForm.frustration === 'Other' && !offerForm.frustrationOther.trim()) {
+      nextErrors.frustrationOther = 'Tell us a little more.';
+    }
+
+    if (!offerForm.websiteGoal) {
+      nextErrors.websiteGoal = 'Choose one answer.';
+    } else if (offerForm.websiteGoal === 'Other' && !offerForm.websiteGoalOther.trim()) {
+      nextErrors.websiteGoalOther = 'Tell us a little more.';
+    }
+
+    if (!offerForm.businessType) {
+      nextErrors.businessType = 'Choose one answer.';
+    } else if (offerForm.businessType === 'Other' && !offerForm.businessTypeOther.trim()) {
+      nextErrors.businessTypeOther = 'Tell us a little more.';
+    }
+
+    for (const [field, message] of requiredFields) {
+      if (!offerForm[field].trim()) {
+        nextErrors[field] = message;
+      }
+    }
+
+    if (Object.keys(nextErrors).length > 0) {
+      setOfferErrors(nextErrors);
+      return;
+    }
+
+    setIsOfferSubmitting(true);
+    setOfferSubmitError('');
+
+    try {
+      const response = await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          frustration: offerForm.frustration === 'Other' ? offerForm.frustrationOther.trim() : offerForm.frustration,
+          websiteGoal: offerForm.websiteGoal === 'Other' ? offerForm.websiteGoalOther.trim() : offerForm.websiteGoal,
+          businessType: offerForm.businessType === 'Other' ? offerForm.businessTypeOther.trim() : offerForm.businessType,
+          budget: offerForm.budget.trim(),
+          businessName: offerForm.businessName.trim(),
+          contact: offerForm.contact.trim(),
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Lead submission failed');
+      }
+
+      setOfferSubmitted(true);
+    } catch {
+      setOfferSubmitError('We couldn’t send that just now. Please try again.');
+    } finally {
+      setIsOfferSubmitting(false);
+    }
+  };
 
   const handleMockupMove = (event: MouseEvent<HTMLDivElement>) => {
     const bounds = event.currentTarget.getBoundingClientRect();
@@ -82,13 +285,14 @@ export default function Home() {
   };
 
   useEffect(() => {
-    if (!isContactOpen) {
+    if (!isContactOpen && !isOfferOpen) {
       return;
     }
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         setIsContactOpen(false);
+        setIsOfferOpen(false);
       }
     };
 
@@ -100,7 +304,7 @@ export default function Home() {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isContactOpen]);
+  }, [isContactOpen, isOfferOpen]);
 
   return (
     <main className="reference-page" data-testid="page-home">
@@ -144,9 +348,9 @@ export default function Home() {
               <li className="hero-check-emphasis">Free. No obligation.</li>
             </ul>
             <div className="hero-actions">
-              <a className="hero-cta" href={freeOfferFormUrl} target="_blank" rel="noreferrer" data-testid="button-claim-offer">
+              <button className="hero-cta" type="button" onClick={openOffer} data-testid="button-claim-offer">
                 Claim My Free Offer <span aria-hidden="true">→</span>
-              </a>
+              </button>
               <a className="hero-secondary-cta" href="#work" data-testid="button-see-work">
                 See our work <span aria-hidden="true">↗</span>
               </a>
@@ -586,6 +790,131 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {isOfferOpen && (
+        <div
+          className="offer-modal-backdrop"
+          role="presentation"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget && !isOfferSubmitting) {
+              setIsOfferOpen(false);
+            }
+          }}
+        >
+          <div className="offer-modal" role="dialog" aria-modal="true" aria-labelledby="offer-modal-title">
+            {offerSubmitted ? (
+              <div className="offer-success" data-testid="offer-success" role="status">
+                <span className="offer-success-mark" aria-hidden="true">✦</span>
+                <h2 id="offer-modal-title">Thanks — your request is in.</h2>
+                <p>
+                  We’ll review your answers and send your free website growth plan within
+                  24 to 48 working hours.
+                </p>
+                <button className="offer-submit-button" type="button" onClick={() => setIsOfferOpen(false)}>
+                  Close
+                </button>
+              </div>
+            ) : (
+              <>
+                <div className="offer-modal-header">
+                  <div>
+                    <span className="offer-modal-kicker">Studio 1801</span>
+                    <h2 id="offer-modal-title">Claim your free offer.</h2>
+                    <p>Answer six quick questions and we’ll send a clear plan for your website.</p>
+                  </div>
+                  <button
+                    className="offer-modal-close"
+                    type="button"
+                    aria-label="Close free offer form"
+                    onClick={() => setIsOfferOpen(false)}
+                    disabled={isOfferSubmitting}
+                  >
+                    ×
+                  </button>
+                </div>
+
+                <form className="offer-form" onSubmit={handleOfferSubmit} noValidate>
+                  <RadioQuestion
+                    id="frustration"
+                    legend="What is your biggest frustration in running the F&B business right now?"
+                    options={frustrationOptions}
+                    value={offerForm.frustration}
+                    otherValue={offerForm.frustrationOther}
+                    error={offerErrors.frustration || offerErrors.frustrationOther}
+                    onChange={(value) => updateOfferField('frustration', value)}
+                    onOtherChange={(value) => updateOfferField('frustrationOther', value)}
+                  />
+                  <RadioQuestion
+                    id="websiteGoal"
+                    legend="If your website could do ONE new thing for you, what would it be?"
+                    options={websiteGoalOptions}
+                    value={offerForm.websiteGoal}
+                    otherValue={offerForm.websiteGoalOther}
+                    error={offerErrors.websiteGoal || offerErrors.websiteGoalOther}
+                    onChange={(value) => updateOfferField('websiteGoal', value)}
+                    onOtherChange={(value) => updateOfferField('websiteGoalOther', value)}
+                  />
+                  <RadioQuestion
+                    id="businessType"
+                    legend="What type of F&B business are you in?"
+                    options={businessTypeOptions}
+                    value={offerForm.businessType}
+                    otherValue={offerForm.businessTypeOther}
+                    error={offerErrors.businessType || offerErrors.businessTypeOther}
+                    onChange={(value) => updateOfferField('businessType', value)}
+                    onOtherChange={(value) => updateOfferField('businessTypeOther', value)}
+                  />
+
+                  <label className="offer-field-label" htmlFor="offer-budget">
+                    What is your estimated budget range for a new website? <span className="offer-required" aria-hidden="true">*</span>
+                    <input
+                      id="offer-budget"
+                      className="offer-text-input"
+                      type="text"
+                      value={offerForm.budget}
+                      onChange={(event) => updateOfferField('budget', event.target.value)}
+                      aria-invalid={Boolean(offerErrors.budget)}
+                      required
+                    />
+                    {offerErrors.budget && <span className="offer-field-error">{offerErrors.budget}</span>}
+                  </label>
+                  <label className="offer-field-label" htmlFor="offer-business-name">
+                    What&apos;s your business name? <span className="offer-required" aria-hidden="true">*</span>
+                    <input
+                      id="offer-business-name"
+                      className="offer-text-input"
+                      type="text"
+                      value={offerForm.businessName}
+                      onChange={(event) => updateOfferField('businessName', event.target.value)}
+                      aria-invalid={Boolean(offerErrors.businessName)}
+                      required
+                    />
+                    {offerErrors.businessName && <span className="offer-field-error">{offerErrors.businessName}</span>}
+                  </label>
+                  <label className="offer-field-label" htmlFor="offer-contact">
+                    Your active email address or phone number? <span className="offer-required" aria-hidden="true">*</span>
+                    <input
+                      id="offer-contact"
+                      className="offer-text-input"
+                      type="text"
+                      value={offerForm.contact}
+                      onChange={(event) => updateOfferField('contact', event.target.value)}
+                      aria-invalid={Boolean(offerErrors.contact)}
+                      required
+                    />
+                    {offerErrors.contact && <span className="offer-field-error">{offerErrors.contact}</span>}
+                  </label>
+
+                  {offerSubmitError && <p className="offer-submit-error" role="alert">{offerSubmitError}</p>}
+                  <button className="offer-submit-button" type="submit" disabled={isOfferSubmitting}>
+                    {isOfferSubmitting ? 'Sending…' : 'Send my answers →'}
+                  </button>
+                </form>
+              </>
+            )}
+          </div>
+        </div>
+      )}
 
       {isContactOpen && (
         <div

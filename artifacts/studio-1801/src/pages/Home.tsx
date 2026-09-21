@@ -273,16 +273,6 @@ export default function Home() {
     }
   };
 
-  const answeredOfferQuestions = [
-    offerForm.frustration,
-    offerForm.websiteGoal,
-    offerForm.businessType,
-    offerForm.budget.trim(),
-    offerForm.businessName.trim(),
-    offerForm.contact.trim(),
-  ].filter(Boolean).length;
-  const currentOfferQuestion = Math.min(answeredOfferQuestions + 1, 6);
-
   const handleMockupMove = (event: MouseEvent<HTMLDivElement>) => {
     const bounds = event.currentTarget.getBoundingClientRect();
     const normalizedX = (event.clientX - bounds.left) / bounds.width - 0.5;
@@ -831,7 +821,6 @@ export default function Home() {
                     <span className="offer-modal-kicker">Studio 1801</span>
                     <h2 id="offer-modal-title">Claim your free offer.</h2>
                     <p>Answer six quick questions and we’ll send a clear plan for your website.</p>
-                    <span className="offer-progress">Question {currentOfferQuestion} of 6</span>
                   </div>
                   <button
                     className="offer-modal-close"

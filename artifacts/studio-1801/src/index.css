@@ -353,7 +353,7 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0.84rem;
 }
 .offer-modal-kicker {
   display: block;
@@ -375,19 +375,11 @@
 .offer-modal-header p,
 .offer-success p {
   max-width: 29rem;
-  margin: 0.9rem 0 0;
+  margin: 0.36rem 0 0;
   color: var(--gray-text);
   font-family: "Work Sans";
   font-size: 0.82rem;
   line-height: 1.5;
-}
-.offer-progress {
-  display: block;
-  margin-top: 0.85rem;
-  color: rgba(23, 20, 15, 0.58);
-  font-family: "Work Sans";
-  font-size: 0.68rem;
-  line-height: 1;
 }
 .offer-modal-close {
   display: grid;
@@ -414,12 +406,12 @@
 }
 .offer-form {
   display: grid;
-  gap: 48px;
+  gap: 8px;
 }
 .offer-fieldset {
   min-width: 0;
   margin: 0;
-  padding: 0 0 1.5rem;
+  padding: 0 0 12px;
   border: 0;
 }
 .offer-fieldset legend,
@@ -428,8 +420,8 @@
   margin-bottom: 0.85rem;
   color: #17140f;
   font-family: "Work Sans";
-  font-size: 0.82rem;
-  font-weight: 500;
+  font-size: 23px;
+  font-weight: 700;
   line-height: 1.4;
 }
 .offer-required {
@@ -438,12 +430,12 @@
 .offer-radio-options {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 0.35rem;
+  gap: 8px;
 }
 .offer-radio-option {
   display: flex;
   align-items: flex-start;
-  gap: 0.9rem;
+  gap: 10px;
   min-height: 44px;
   padding: 0.7rem 0;
   color: rgba(23, 20, 15, 0.8);
@@ -3399,7 +3391,7 @@
 
   .offer-modal-header {
     gap: 1rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.63rem;
   }
 
   .offer-modal-header h2,
@@ -3414,10 +3406,10 @@
 
   .offer-radio-options {
     grid-template-columns: 1fr;
-    gap: 0.2rem;
+    gap: 8px;
   }
 
   .offer-form {
-    gap: 48px;
+    gap: 8px;
   }
 }

@@ -443,18 +443,6 @@ export default function Home() {
                     />
                   </figure>
                 ))}
-                <div className="hero-slide-controls" aria-label="Choose slideshow image">
-                  {heroSlides.map((slide, index) => (
-                    <button
-                      className={`hero-slide-dot ${activeHeroSlide === index ? 'hero-slide-dot-active' : ''}`}
-                      key={slide.image}
-                      type="button"
-                      aria-label={`Show image ${index + 1}`}
-                      aria-pressed={activeHeroSlide === index}
-                      onClick={() => setActiveHeroSlide(index)}
-                    />
-                  ))}
-                </div>
               </div>
             </div>
           </section>

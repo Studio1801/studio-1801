@@ -410,15 +410,6 @@ export default function Home() {
           </section>
 
           <section className="reference-right" data-testid="section-hero-right">
-            <div className="reference-work-copy">
-              <h2 data-testid="text-hero-secondary-title">
-                Make a better first impression.
-              </h2>
-              <p data-testid="text-hero-secondary-desc">
-                A clear, considered website that gives your best work the attention it deserves.
-              </p>
-              <a href="#work" data-testid="link-hero-explore">Explore the work <span aria-hidden="true">→</span></a>
-            </div>
             <div
               className="hero-mockup-stage"
               data-testid="hero-mockup-stage"

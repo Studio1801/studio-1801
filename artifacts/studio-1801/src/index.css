@@ -143,9 +143,9 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  margin: -18px 0 24px;
+  margin: 0 0 30px;
   color: var(--gray-text);
-  font-size: 12px;
+  font-size: 0.95rem;
   line-height: 1.4;
 }
 .hero-trust-line span {
@@ -550,7 +550,7 @@
   position: relative;
   width: 100%;
   aspect-ratio: 1.42;
-  margin-top: 30px;
+  margin-top: 0;
   isolation: isolate;
 }
 .hero-slideshow {
@@ -590,29 +590,6 @@
     transition: none;
   }
 }
-.reference-work-copy h2 {
-  font-size: clamp(24px, 2vw, 32px);
-  font-weight: 600;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-  margin: 0 0 12px;
-}
-.reference-work-copy p {
-  font-size: 14px;
-  color: var(--gray-text);
-  margin: 0 0 16px;
-}
-.reference-work-copy a {
-  display: inline-block;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  color: var(--charcoal);
-  text-decoration: none;
-  border-bottom: 0;
-  padding-bottom: 0;
-}
-
 .reference-footer {
   display: flex;
   justify-content: space-between;
@@ -671,12 +648,12 @@
 
   .reference-right {
     align-self: start;
-    padding-top: 2rem;
+    padding-top: 0;
   }
 
   .hero-mockup-stage {
-    aspect-ratio: 1.667;
-    max-height: 48dvh;
+    aspect-ratio: 1.2;
+    max-height: 58dvh;
   }
 
   .reference-left {
@@ -708,14 +685,6 @@
     padding: 0.95em 1.55em;
   }
 
-  .reference-work-copy p {
-    font-size: 0.78rem;
-  }
-
-  .reference-work-copy a {
-    font-size: 0.765rem;
-  }
-
   .reference-offer-note {
     font-size: 0.84rem;
   }
@@ -733,22 +702,9 @@
     min-width: 0;
   }
 
-  .reference-work-copy h2 {
-    font-size: 2rem;
-    max-width: 10.5em;
-    line-height: 1.08;
-    letter-spacing: -0.03em;
-    margin-bottom: 0.9rem;
-  }
-
-  .reference-work-copy p {
-    max-width: 15rem;
-    margin-bottom: 1.1rem;
-  }
-
   .hero-mockup-stage {
-    margin-top: 1.75rem;
-    width: calc(100% - 0.5rem);
+    margin-top: 0;
+    width: 100%;
   }
 
   .reference-footer {
@@ -2766,27 +2722,10 @@
     gap: 26px;
   }
 
-  .reference-work-copy {
-    order: 1;
-  }
-
   .reference-right .hero-mockup-stage {
     order: -1;
     aspect-ratio: 1.2;
     margin: 0;
-  }
-
-  .reference-work-copy h2 {
-    font-size: 1.8rem;
-    line-height: 1.08;
-    margin-bottom: 10px;
-  }
-
-  .reference-work-copy p {
-    max-width: 22rem;
-    font-size: 0.95rem;
-    line-height: 1.45;
-    margin-bottom: 14px;
   }
 
   .reference-footer {

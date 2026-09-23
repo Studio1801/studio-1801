@@ -27,6 +27,11 @@ import strategyRoom from '@assets/image_1787508416188.png';
 import strategyStreet from '@assets/image_1787508483431.png';
 import commonTableSelectedWork from '@assets/image_1787589715542.png';
 import fieldNotesSelectedWork from '@assets/image_1787589680522.png';
+import heroSlideOne from '@assets/WhatsApp_Image_2026-09-21_at_12.07.38_1790182617814.jpeg';
+import heroSlideTwo from '@assets/WhatsApp_Image_2026-09-22_at_12.09.48_1790182617814.jpeg';
+import heroSlideThree from '@assets/WhatsApp_Image_2026-09-22_at_12.09.49_(1)_1790182617815.jpeg';
+import heroSlideFour from '@assets/WhatsApp_Image_2026-09-22_at_12.09.49_(2)_1790182617815.jpeg';
+import heroSlideFive from '@assets/WhatsApp_Image_2026-09-22_at_12.09.49_1790182617815.jpeg';
 
 const contactDraftUrl = `mailto:hello@1801.studio?subject=${encodeURIComponent('FREE website design and mockup')}&body=${encodeURIComponent(`Hi Studio 1801,
 
@@ -182,8 +187,32 @@ const serviceOptions = [
   },
 ];
 
+const heroSlides = [
+  {
+    image: heroSlideOne,
+    alt: 'Restaurant website displayed on a phone resting on a green velvet chair',
+  },
+  {
+    image: heroSlideTwo,
+    alt: 'Bakery website displayed on a tablet against a blue tiled wall',
+  },
+  {
+    image: heroSlideThree,
+    alt: 'Sandwich shop website displayed on a tablet in warm sunlight',
+  },
+  {
+    image: heroSlideFour,
+    alt: 'Restaurant website displayed on a desktop monitor in a moody dining room',
+  },
+  {
+    image: heroSlideFive,
+    alt: 'Breakfast restaurant website displayed on a phone at a diner table',
+  },
+];
+
 export default function Home() {
   const [activeService, setActiveService] = useState(0);
+  const [activeHeroSlide, setActiveHeroSlide] = useState(0);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isOfferOpen, setIsOfferOpen] = useState(false);
   const [offerSubmitted, setOfferSubmitted] = useState(false);
@@ -300,6 +329,14 @@ export default function Home() {
   };
 
   useEffect(() => {
+    const slideTimer = window.setInterval(() => {
+      setActiveHeroSlide((current) => (current + 1) % heroSlides.length);
+    }, 4500);
+
+    return () => window.clearInterval(slideTimer);
+  }, []);
+
+  useEffect(() => {
     if (!isContactOpen && !isOfferOpen) {
       return;
     }
@@ -392,51 +429,31 @@ export default function Home() {
                 '--mockup-parallax-y': `${mockupOffset.y}px`,
               } as CSSProperties}
             >
-              <div className="hero-mockup hero-browser-mockup" data-testid="mockup-browser">
-                <div className="mockup-browser-bar">
-                  <span className="mockup-browser-dots" aria-hidden="true">
-                    <i />
-                    <i />
-                    <i />
-                  </span>
-                  <span className="mockup-browser-url">studio1801.com</span>
-                </div>
-                <div className="mockup-browser-body">
-                  <div className="mockup-browser-nav">
-                    <strong>studio 1801</strong>
-                    <span>Menu&nbsp; · &nbsp;Contact</span>
-                  </div>
-                  <div className="mockup-image-block mockup-browser-image" aria-hidden="true">
-                    <span>Make room for what matters.</span>
-                  </div>
-                  <div className="mockup-display-heading">A better digital front door.</div>
-                  <div className="mockup-text-bars" aria-hidden="true">
-                    <i />
-                    <i />
-                    <i />
-                  </div>
-                  <span className="mockup-button">Explore the work&nbsp; →</span>
-                </div>
-              </div>
-
-              <div className="hero-mockup hero-phone-mockup" data-testid="mockup-phone">
-                <div className="mockup-phone-speaker" aria-hidden="true" />
-                <div className="mockup-phone-screen">
-                  <div className="mockup-phone-nav">
-                    <strong>1801</strong>
-                    <span>•••</span>
-                  </div>
-                  <div className="mockup-phone-image-stack" aria-hidden="true">
-                    <span />
-                    <span />
-                    <span />
-                  </div>
-                  <div className="mockup-phone-heading">Find your next favorite place.</div>
-                  <div className="mockup-text-bars mockup-phone-bars" aria-hidden="true">
-                    <i />
-                    <i />
-                  </div>
-                  <span className="mockup-button mockup-phone-button">Book a table</span>
+              <div className="hero-slideshow" data-testid="hero-slideshow" aria-label="Selected restaurant website work">
+                {heroSlides.map((slide, index) => (
+                  <figure
+                    className={`hero-slide ${activeHeroSlide === index ? 'hero-slide-active' : ''}`}
+                    key={slide.image}
+                    aria-hidden={activeHeroSlide !== index}
+                  >
+                    <img
+                      src={slide.image}
+                      alt={slide.alt}
+                      loading={index === 0 ? 'eager' : 'lazy'}
+                    />
+                  </figure>
+                ))}
+                <div className="hero-slide-controls" aria-label="Choose slideshow image">
+                  {heroSlides.map((slide, index) => (
+                    <button
+                      className={`hero-slide-dot ${activeHeroSlide === index ? 'hero-slide-dot-active' : ''}`}
+                      key={slide.image}
+                      type="button"
+                      aria-label={`Show image ${index + 1}`}
+                      aria-pressed={activeHeroSlide === index}
+                      onClick={() => setActiveHeroSlide(index)}
+                    />
+                  ))}
                 </div>
               </div>
             </div>

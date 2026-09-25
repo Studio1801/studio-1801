@@ -410,6 +410,7 @@ export default function Home() {
           </section>
 
           <section className="reference-right" data-testid="section-hero-right">
+            <p className="hero-work-caption">Recent work for F&amp;B brands.</p>
             <div
               className="hero-mockup-stage"
               data-testid="hero-mockup-stage"

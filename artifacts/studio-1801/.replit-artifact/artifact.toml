@@ -16,64 +16,17 @@ run = "pnpm --filter @workspace/studio-1801 run dev"
 
 [services.production]
 build = [ "pnpm", "--filter", "@workspace/studio-1801", "run", "build" ]
-serve = "static"
-publicDir = "artifacts/studio-1801/dist/public"
 
-[[services.production.rewrites]]
-from = "/other-works"
-to = "/other-works/index.html"
+[services.production.run]
+args = [ "pnpm", "--filter", "@workspace/studio-1801", "run", "serve" ]
 
-[[services.production.rewrites]]
-from = "/work/after-hours"
-to = "/work/after-hours/index.html"
+[services.production.run.env]
+PORT = "24302"
+BASE_PATH = "/"
+NODE_ENV = "production"
 
-[[services.production.rewrites]]
-from = "/work/common-table"
-to = "/work/common-table/index.html"
-
-[[services.production.rewrites]]
-from = "/work/field-notes"
-to = "/work/field-notes/index.html"
-
-[[services.production.rewrites]]
-from = "/work/the-flour-room"
-to = "/work/the-flour-room/index.html"
-
-[[services.production.rewrites]]
-from = "/work/market-table"
-to = "/work/market-table/index.html"
-
-[[services.production.rewrites]]
-from = "/work/first-light"
-to = "/work/first-light/index.html"
-
-[[services.production.rewrites]]
-from = "/preview/after-hours"
-to = "/preview/after-hours/index.html"
-
-[[services.production.rewrites]]
-from = "/preview/common-table"
-to = "/preview/common-table/index.html"
-
-[[services.production.rewrites]]
-from = "/preview/field-notes"
-to = "/preview/field-notes/index.html"
-
-[[services.production.rewrites]]
-from = "/preview/the-flour-room"
-to = "/preview/the-flour-room/index.html"
-
-[[services.production.rewrites]]
-from = "/preview/market-table"
-to = "/preview/market-table/index.html"
-
-[[services.production.rewrites]]
-from = "/preview/first-light"
-to = "/preview/first-light/index.html"
-
-[[services.production.rewrites]]
-from = "/*"
-to = "/index.html"
+[services.production.health.startup]
+path = "/"
 
 [services.env]
 PORT = "24302"

@@ -7,26 +7,26 @@ import {
 } from 'react';
 import { Instagram, Mail, MessageCircle, MessageSquare } from 'lucide-react';
 import projectOne from '@assets/Unknown_1787504780455.png';
-import projectTwo from '@assets/Unknown1_1787438547314.png';
-import projectThree from '@assets/Unknown2_1787438547314.png';
-import projectFour from '@assets/image_1787495321878.png';
-import projectFive from '@assets/image_1787495413455.png';
-import projectSix from '@assets/image_1787495063895.png';
-import afterHoursSelectedWork from '@assets/image_1787590125025.png';
-import serviceDesign from '@assets/image_1787440461289.png';
+import projectTwo from '@assets/Unknown1_1787438547314.webp';
+import projectThree from '@assets/Unknown2_1787438547314.webp';
+import projectFour from '@assets/image_1787495321878.webp';
+import projectFive from '@assets/image_1787495413455.webp';
+import projectSix from '@assets/image_1787495063895.webp';
+import afterHoursSelectedWork from '@assets/image_1787590125025.webp';
+import serviceDesign from '@assets/image_1787440461289.webp';
 import serviceDevelopment from '@assets/image_1787441232956.png';
 import serviceIntegration from '@assets/image_1787440676159.png';
 import serviceSeo from '@assets/image_1787440851872.png';
-import processOne from '@assets/image_1787442021416.png';
-import processTwo from '@assets/image_1787442058572.png';
-import processThree from '@assets/image_1787442170090.png';
-import processFour from '@assets/image_1787442266936.png';
-import processFive from '@assets/image_1787442378754.png';
-import processSix from '@assets/image_1787442428529.png';
+import processOne from '@assets/image_1787442021416.webp';
+import processTwo from '@assets/image_1787442058572.webp';
+import processThree from '@assets/image_1787442170090.webp';
+import processFour from '@assets/image_1787442266936.webp';
+import processFive from '@assets/image_1787442378754.webp';
+import processSix from '@assets/image_1787442428529.webp';
 import strategyRoom from '@assets/image_1787508416188.png';
 import strategyStreet from '@assets/image_1787508483431.png';
 import commonTableSelectedWork from '@assets/image_1787589715542.png';
-import fieldNotesSelectedWork from '@assets/image_1787589680522.png';
+import fieldNotesSelectedWork from '@assets/image_1787589680522.webp';
 import heroSlideOne from '@assets/WhatsApp_Image_2026-09-21_at_12.07.38_1790182617814.jpeg';
 import heroSlideTwo from '@assets/WhatsApp_Image_2026-09-22_at_12.09.48_1790182617814.jpeg';
 import heroSlideThree from '@assets/WhatsApp_Image_2026-09-22_at_12.09.49_(1)_1790182617815.jpeg';
@@ -485,7 +485,7 @@ export default function Home() {
         <div className="work-grid" data-testid="grid-work-projects">
           <a className="work-card" href={`${import.meta.env.BASE_URL}preview/after-hours`} data-testid="card-project-1">
               <div className="work-card-image">
-              <img src={afterHoursSelectedWork} alt="Ramen served in a dark restaurant setting" data-testid="img-project-1" />
+              <img src={afterHoursSelectedWork} alt="Ramen served in a dark restaurant setting" loading="lazy" data-testid="img-project-1" />
             </div>
             <div className="work-card-meta">
               <h3 data-testid="text-project-1-title">After Hours</h3>
@@ -494,7 +494,7 @@ export default function Home() {
           </a>
           <a className="work-card" href={`${import.meta.env.BASE_URL}preview/common-table`} data-testid="card-project-2">
             <div className="work-card-image">
-              <img src={commonTableSelectedWork} alt="Common Table hospitality art direction" data-testid="img-project-2" />
+              <img src={commonTableSelectedWork} alt="Common Table hospitality art direction" loading="lazy" data-testid="img-project-2" />
             </div>
             <div className="work-card-meta">
               <h3 data-testid="text-project-2-title">Common Table</h3>
@@ -503,7 +503,7 @@ export default function Home() {
           </a>
           <a className="work-card" href={`${import.meta.env.BASE_URL}preview/field-notes`} data-testid="card-project-3">
             <div className="work-card-image">
-              <img src={fieldNotesSelectedWork} alt="Sushi and wine served at a dark restaurant table" data-testid="img-project-3" />
+              <img src={fieldNotesSelectedWork} alt="Sushi and wine served at a dark restaurant table" loading="lazy" data-testid="img-project-3" />
             </div>
             <div className="work-card-meta">
               <h3 data-testid="text-project-3-title">Field Notes</h3>
@@ -512,7 +512,7 @@ export default function Home() {
           </a>
           <a className="work-card" href={`${import.meta.env.BASE_URL}preview/the-flour-room`} data-testid="card-project-4">
             <div className="work-card-image">
-              <img src={projectFour} alt="Bakers arranging rows of fresh croissants on a tray" data-testid="img-project-4" />
+              <img src={projectFour} alt="Bakers arranging rows of fresh croissants on a tray" loading="lazy" data-testid="img-project-4" />
             </div>
             <div className="work-card-meta">
               <h3 data-testid="text-project-4-title">The Flour Room</h3>
@@ -521,7 +521,7 @@ export default function Home() {
           </a>
           <a className="work-card" href={`${import.meta.env.BASE_URL}preview/market-table`} data-testid="card-project-5">
             <div className="work-card-image">
-              <img src={projectFive} alt="A Thai restaurant table filled with colorful shared dishes" data-testid="img-project-5" />
+              <img src={projectFive} alt="A Thai restaurant table filled with colorful shared dishes" loading="lazy" data-testid="img-project-5" />
             </div>
             <div className="work-card-meta">
               <h3 data-testid="text-project-5-title">Market Table</h3>
@@ -530,7 +530,7 @@ export default function Home() {
           </a>
           <a className="work-card" href={`${import.meta.env.BASE_URL}preview/first-light`} data-testid="card-project-6">
             <div className="work-card-image">
-              <img src={projectSix} alt="Coffee and a pastry on a warm wooden cafe table" data-testid="img-project-6" />
+              <img src={projectSix} alt="Coffee and a pastry on a warm wooden cafe table" loading="lazy" data-testid="img-project-6" />
             </div>
             <div className="work-card-meta">
               <h3 data-testid="text-project-6-title">First Light</h3>
@@ -599,11 +599,11 @@ export default function Home() {
 
         <div className="strategy-visuals">
           <figure className="strategy-visual strategy-visual-wide" data-testid="img-strategy-room">
-            <img src={strategyRoom} alt="A full dining room in motion on a busy evening" />
+            <img src={strategyRoom} alt="A full dining room in motion on a busy evening" loading="lazy" />
             <figcaption>Saturday, 8:10 pm. The room sells itself.</figcaption>
           </figure>
           <figure className="strategy-visual strategy-visual-tall" data-testid="img-strategy-street">
-            <img src={strategyStreet} alt="A dropped takeaway cup on the pavement as someone walks past" />
+            <img src={strategyStreet} alt="A dropped takeaway cup on the pavement as someone walks past" loading="lazy" />
             <figcaption>Tuesday, noon. The guests who walked past.</figcaption>
           </figure>
         </div>
@@ -621,7 +621,7 @@ export default function Home() {
           </div>
 
           <div className="services-image" data-testid="img-service-active-container">
-            <img src={serviceOptions[activeService].image} alt={serviceOptions[activeService].alt} data-testid="img-service-active" />
+            <img src={serviceOptions[activeService].image} alt={serviceOptions[activeService].alt} loading="lazy" data-testid="img-service-active" />
           </div>
 
           <nav className="services-list" aria-label="What we do" data-testid="nav-services">
@@ -721,7 +721,7 @@ export default function Home() {
             <article className={`process-step process-step-${index + 1}`} key={step.title} data-testid={`article-process-${index + 1}`}>
               <span className="process-duration" data-testid={`text-process-${index + 1}-duration`}>{step.duration}</span>
               <div className="process-step-image">
-                <img src={step.image} alt={step.alt} data-testid={`img-process-${index + 1}`} />
+                <img src={step.image} alt={step.alt} loading="lazy" data-testid={`img-process-${index + 1}`} />
               </div>
               <div className="process-step-copy">
                 <h3 data-testid={`text-process-${index + 1}-title`}>{step.title}</h3>

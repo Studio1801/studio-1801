@@ -1,14 +1,14 @@
 import type { RouteComponentProps } from 'wouter';
 import projectOne from '@assets/Unknown_1787504780455.png';
-import projectTwo from '@assets/Unknown1_1787438547314.png';
-import projectThree from '@assets/Unknown2_1787438547314.png';
-import projectFour from '@assets/image_1787495321878.png';
-import projectFive from '@assets/image_1787495413455.png';
-import projectSix from '@assets/image_1787495063895.png';
-import afterHoursHero from '@assets/image_1787586093620.png';
+import projectTwo from '@assets/Unknown1_1787438547314.webp';
+import projectThree from '@assets/Unknown2_1787438547314.webp';
+import projectFour from '@assets/image_1787495321878.webp';
+import projectFive from '@assets/image_1787495413455.webp';
+import projectSix from '@assets/image_1787495063895.webp';
+import afterHoursHero from '@assets/image_1787586093620.webp';
 import afterHoursPasta from '@assets/image_1787586183033.png';
-import afterHoursPizza from '@assets/image_1787586288541.png';
-import afterHoursTable from '@assets/image_1787586334485.png';
+import afterHoursPizza from '@assets/image_1787586288541.webp';
+import afterHoursTable from '@assets/image_1787586334485.webp';
 
 const projects = [
   {
@@ -130,7 +130,7 @@ function AfterHoursPage() {
                 {String(products.indexOf(product) + 1).padStart(2, '0')}
               </span>
               <div className="after-hours-product-image">
-                <img src={product.image} alt={product.name} />
+                <img src={product.image} alt={product.name} loading="lazy" />
               </div>
               <h3>{product.name}</h3>
               <div className="after-hours-product-footer">
@@ -144,10 +144,10 @@ function AfterHoursPage() {
 
       <section id="story" className="after-hours-story">
         <div className="after-hours-story-image">
-          <img src={afterHoursTable} alt="A candlelit table set with pasta, bread, and wine" />
+          <img src={afterHoursTable} alt="A candlelit table set with pasta, bread, and wine" loading="lazy" />
         </div>
         <div className="after-hours-story-detail">
-          <img src={afterHoursPizza} alt="A pizza served in a pool of sunlight" />
+          <img src={afterHoursPizza} alt="A pizza served in a pool of sunlight" loading="lazy" />
           <span>From the kitchen, with love.</span>
         </div>
         <div className="after-hours-story-copy">
@@ -222,7 +222,7 @@ export default function ProjectPage({ params }: RouteComponentProps<{ slug: stri
         </div>
 
         <div className="portfolio-image">
-          <img src={project.image} alt={project.alt} data-testid="img-project-portfolio" />
+          <img src={project.image} alt={project.alt} loading="lazy" data-testid="img-project-portfolio" />
         </div>
 
         <div className="portfolio-details">

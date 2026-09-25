@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { RouteComponentProps } from 'wouter';
 
 const previewSites: Record<string, { title: string; url: string }> = {
@@ -31,6 +31,20 @@ const previewSites: Record<string, { title: string; url: string }> = {
 export default function PreviewPage({ params }: RouteComponentProps<{ slug: string }>) {
   const [isMobile, setIsMobile] = useState(false);
   const site = previewSites[params.slug];
+
+  useEffect(() => {
+    const robotsMeta = document.querySelector<HTMLMetaElement>('meta[name="robots"]');
+    if (!robotsMeta) return;
+
+    const previousContent = robotsMeta.content;
+    robotsMeta.content = 'noindex';
+
+    return () => {
+      if (robotsMeta.content === 'noindex') {
+        robotsMeta.content = previousContent.includes('noindex') ? 'index, follow' : previousContent;
+      }
+    };
+  }, [params.slug]);
 
   if (!site) {
     return (

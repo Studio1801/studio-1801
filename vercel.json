@@ -1,6 +1,18 @@
 {
   "rewrites": [
     {
+      "source": "/other-works",
+      "destination": "/other-works/index.html"
+    },
+    {
+      "source": "/work/:slug",
+      "destination": "/work/:slug/index.html"
+    },
+    {
+      "source": "/preview/:slug",
+      "destination": "/preview/:slug/index.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://studio-1801-website.replit.app/sitemap.xml

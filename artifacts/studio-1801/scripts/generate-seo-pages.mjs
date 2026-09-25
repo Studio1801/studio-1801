@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 
 const artifactDir = dirname(dirname(fileURLToPath(import.meta.url)));
 const outputDir = resolve(artifactDir, 'dist/public');
-const origin = 'https://studio-1801-website.replit.app';
+const origin = 'https://1801.studio';
 const socialImage = `${origin}/og-studio1801.jpg`;
 
 const indexablePages = [

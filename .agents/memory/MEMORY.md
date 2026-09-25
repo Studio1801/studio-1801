@@ -1,3 +1,4 @@
 - [Studio 1801 style rules](studio-1801-style-rules.md) — house rules (sentence case, 14px rounded images, editorial layout) override details in user reference screenshots.
+- [Studio 1801 SEO checklist](studio-1801-seo-checklist.md) — each indexable route needs unique metadata, one clear H1, meaningful image alts, social preview tags, and justified canonicals.
 - [Vercel SPA routing](vercel-spa-routing.md) — client-side routes need a root rewrite to index.html when hosted on Vercel.
 - [Vercel preview iframe access](vercel-preview-iframe-access.md) — protected Preview deployment URLs redirect to Vercel sign-in and cannot serve as public embedded portfolio previews.
